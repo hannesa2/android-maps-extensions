@@ -3,3 +3,7 @@ build/
 .idea/
 *.iml
 local.properties
+bin
+gen
+*.orig
+.settings
