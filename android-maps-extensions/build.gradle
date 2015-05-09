@@ -1,19 +1,6 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-    }
-}
-
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'signing'
-
-repositories {
-    mavenCentral()
-}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -22,32 +9,23 @@ tasks.withType(JavaCompile) {
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.0.3'
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 8
     }
-
-    sourceSets {
-        main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            res.srcDirs = ['res']
-        }
-    }
-
     dexOptions {
         preDexLibraries = !isTravis
     }
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services:4.3.+'
+    compile 'com.google.android.gms:play-services-maps:6.5.87'
 }
 
 group = 'com.androidmapsextensions'
-version = '2.1.1-SNAPSHOT'
+version = '2.2.0'
 
 if (!isTravis) {
 
@@ -61,7 +39,7 @@ if (!isTravis) {
 
     task sourcesJar(type: Jar) {
         classifier = 'sources'
-        from android.sourceSets.main.allSource
+        from android.sourceSets.main.java.sourceFiles
     }
 
     artifacts {
@@ -94,7 +72,7 @@ if (!isTravis) {
                     name 'Maciej Górski'
                     id 'mg6maciej'
                     email 'maciek.gorski@gmail.com'
-                    url 'http://mg6.pl'
+                    url 'https://github.com/mg6maciej'
                 }
             }
 
@@ -108,24 +86,13 @@ if (!isTravis) {
 
             scm {
                 url 'https://github.com/mg6maciej/android-maps-extensions'
-                connection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
-                developerConnection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
+                connection 'scm:git:git@github.com:mg6maciej/android-maps-extensions.git'
+                developerConnection 'scm:git:git@github.com:mg6maciej/android-maps-extensions.git'
             }
         }
 
         pom.whenConfigured {
             pom -> pom.dependencies = []
-        }
-    }
-}
-
-android.libraryVariants.all { variant ->
-    variant.processManifest.doFirst {
-        File manifestFile = file("${buildDir}/exploded-aar/com.google.android.gms/play-services/4.3.23/AndroidManifest.xml")
-        if (manifestFile.exists()) {
-            String content = manifestFile.getText('UTF-8')
-            content = content.replaceAll(/minSdkVersion="9"/, 'minSdkVersion="8"')
-            manifestFile.write(content, 'UTF-8')
         }
     }
 }
