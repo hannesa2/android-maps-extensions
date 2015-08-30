@@ -26,7 +26,7 @@ android {
     buildToolsVersion defaultBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 9
     }
 
     sourceSets {
@@ -47,7 +47,7 @@ dependencies {
 }
 
 group = 'com.androidmapsextensions'
-version = '2.3.0-SNAPSHOT'
+version = '2.4.0-SNAPSHOT'
 
 //if (!isTravis) {
 //
