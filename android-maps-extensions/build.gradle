@@ -22,7 +22,7 @@ tasks.withType(JavaCompile) {
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 23
     buildToolsVersion '23.0.1'
 
     defaultConfig {
@@ -35,89 +35,79 @@ android {
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services:7.8.0'
+    compile 'com.google.android.gms:play-services:8.1.0'
 }
 
 group = 'com.androidmapsextensions'
 version = '2.4.0-SNAPSHOT'
 
-if (!isTravis) {
-
-    signing {
-        sign configurations.archives
-    }
-
-    task javadocJar(type: Jar) {
-        classifier = 'javadoc'
-    }
-
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        from android.sourceSets.main.java
-    }
-
-    artifacts {
-        archives javadocJar
-        archives sourcesJar
-    }
-
-    uploadArchives.repositories.mavenDeployer {
-
-        beforeDeployment {
-            MavenDeployment deployment -> signing.signPom(deployment)
-        }
-
-        repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
-            authentication(userName: sonatypeUserName, password: sonatypePassword)
-        }
-        snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
-            authentication(userName: sonatypeUserName, password: sonatypePassword)
-        }
-
-        pom.project {
-            name 'Android Maps Extensions'
-            description 'Library extending capabilities of Google Maps Android API v2'
-            inceptionYear '2013'
-            url 'http://AndroidMapsExtensions.com'
-            packaging 'aar'
-
-            developers {
-                developer {
-                    name 'Maciej Górski'
-                    id 'mg6maciej'
-                    email 'maciek.gorski@gmail.com'
-                    url 'http://mg6.pl'
-                }
-            }
-
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
-            }
-
-            scm {
-                url 'https://github.com/mg6maciej/android-maps-extensions'
-                connection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
-                developerConnection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
-            }
-        }
-
-        pom.whenConfigured {
-            pom -> pom.dependencies = []
-        }
-    }
-}
-
-//android.libraryVariants.all { variant ->
-//    variant.processManifest.doFirst {
-//        File manifestFile = file("${buildDir}/exploded-aar/com.google.android.gms/play-services/4.3.23/AndroidManifest.xml")
-//        if (manifestFile.exists()) {
-//            String content = manifestFile.getText('UTF-8')
-//            content = content.replaceAll(/minSdkVersion="9"/, 'minSdkVersion="8"')
-//            manifestFile.write(content, 'UTF-8')
+//if (!isTravis) {
+//
+//    signing {
+//        sign configurations.archives
+//    }
+//
+//    task javadocJar(type: Jar) {
+//        classifier = 'javadoc'
+//    }
+//
+//    task sourcesJar(type: Jar) {
+//        classifier = 'sources'
+//        from android.sourceSets.main.java
+//    }
+//
+//    artifacts {
+//        archives javadocJar
+//        archives sourcesJar
+//    }
+//
+//    uploadArchives.repositories.mavenDeployer {
+//
+//        beforeDeployment {
+//            MavenDeployment deployment -> signing.signPom(deployment)
+//        }
+//
+//        repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+//            authentication(userName: sonatypeUserName, password: sonatypePassword)
+//        }
+//        snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
+//            authentication(userName: sonatypeUserName, password: sonatypePassword)
+//        }
+//
+//        pom.project {
+//            name 'Android Maps Extensions'
+//            description 'Library extending capabilities of Google Maps Android API v2'
+//            inceptionYear '2013'
+//            url 'http://AndroidMapsExtensions.com'
+//            packaging 'aar'
+//
+//            developers {
+//                developer {
+//                    name 'Maciej Górski'
+//                    id 'mg6maciej'
+//                    email 'maciek.gorski@gmail.com'
+//                    url 'http://mg6.pl'
+//                }
+//            }
+//
+//            licenses {
+//                license {
+//                    name 'The Apache Software License, Version 2.0'
+//                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    distribution 'repo'
+//                }
+//            }
+//
+//            scm {
+//                url 'https://github.com/mg6maciej/android-maps-extensions'
+//                connection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
+//                developerConnection 'scm:git:https://github.com/mg6maciej/android-maps-extensions.git'
+//            }
+//        }
+//
+//        pom.whenConfigured {
+//            pom -> pom.dependencies = []
 //        }
 //    }
 //}
+
