@@ -7,8 +7,8 @@ tasks.withType(JavaCompile) {
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 9
