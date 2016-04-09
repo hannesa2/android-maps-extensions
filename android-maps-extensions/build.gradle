@@ -21,6 +21,10 @@ tasks.withType(JavaCompile) {
 
 def isTravis = "true".equals(System.getenv("TRAVIS"))
 
+ext {
+    supportLibVersion = project.hasProperty("defaultSupportLibVersion") ? defaultSupportLibVersion : "23.3.0"
+}
+
 android {
     compileSdkVersion defaultCompileSdkVersion
     buildToolsVersion defaultBuildToolsVersion
@@ -39,8 +43,8 @@ android {
 
 dependencies {
     compile 'com.google.android.gms:play-services-location:8.1.0'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:support-v4:23.2.0'
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:support-v4:${supportLibVersion}"
 }
 
 group = 'com.androidmapsextensions'
