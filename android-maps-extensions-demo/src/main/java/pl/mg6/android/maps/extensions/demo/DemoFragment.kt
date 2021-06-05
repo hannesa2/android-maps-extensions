@@ -169,7 +169,7 @@ class DemoFragment : BaseFragment() {
     private fun setUpClusteringViews(view: View) {
         clusterCheckbox = view.findViewById<View>(R.id.checkbox_cluster) as CheckBox
         clusterSizeSeekbar = view.findViewById<View>(R.id.seekbar_cluster_size) as SeekBar
-        clusterCheckbox!!.setOnCheckedChangeListener { buttonView, isChecked ->
+        clusterCheckbox!!.setOnCheckedChangeListener { _, isChecked ->
             clusterSizeSeekbar!!.isEnabled = isChecked
             updateClustering(clusterSizeSeekbar!!.progress, isChecked)
         }
