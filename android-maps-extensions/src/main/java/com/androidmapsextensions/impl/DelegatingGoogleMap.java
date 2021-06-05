@@ -20,6 +20,8 @@ import android.graphics.Bitmap;
 import android.location.Location;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.androidmapsextensions.Circle;
 import com.androidmapsextensions.CircleOptions;
 import com.androidmapsextensions.ClusteringSettings;
@@ -415,13 +417,13 @@ class DelegatingGoogleMap implements GoogleMap {
     }
 
     @Override
-    public void snapshot(SnapshotReadyCallback callback) {
-        real.snapshot(callback);
+    public void snapshot(@Nullable SnapshotReadyCallback callback, Bitmap bitmap) {
+        real.snapshot(callback, bitmap);
     }
 
     @Override
-    public void snapshot(SnapshotReadyCallback callback, Bitmap bitmap) {
-        real.snapshot(callback, bitmap);
+    public void snapshot(@Nullable GoogleMap.SnapshotReadyCallback callback) {
+        real.snapshot(callback);
     }
 
     @Override
