@@ -139,12 +139,6 @@ interface GoogleMap {
 
     interface OnCameraMoveStartedListener : GoogleMap.OnCameraMoveStartedListener {
         override fun onCameraMoveStarted(reason: Int)
-
-        companion object {
-            const val REASON_API_ANIMATION = GoogleMap.OnCameraMoveStartedListener.REASON_API_ANIMATION
-            const val REASON_DEVELOPER_ANIMATION = GoogleMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION
-            const val REASON_GESTURE = GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE
-        }
     }
 
     interface OnCircleClickListener {
@@ -210,6 +204,6 @@ interface GoogleMap {
     }
 
     interface SnapshotReadyCallback : GoogleMap.SnapshotReadyCallback {
-        override fun onSnapshotReady(snapshot: Bitmap)
+        override fun onSnapshotReady(bitmap: Bitmap?)
     }
 }
