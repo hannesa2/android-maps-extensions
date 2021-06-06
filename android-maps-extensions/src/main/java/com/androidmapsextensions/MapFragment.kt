@@ -13,10 +13,6 @@ class MapFragment : com.google.android.gms.maps.MapFragment(), MapHolder.Delegat
         mapHolder.getExtendedMapAsync(callback)
     }
 
-    override fun getContext(): Context {
-        return activity
-    }
-
     companion object {
         // value taken from google-play-services.jar
         private const val MAP_OPTIONS = "MapOptions"
