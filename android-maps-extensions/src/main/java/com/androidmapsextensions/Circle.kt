@@ -8,6 +8,7 @@ interface Circle {
     var center: LatLng?
     fun <T> getData(): T
     var fillColor: Int
+
     @get:Deprecated("Who needs this ?")
     val id: String?
 
@@ -20,5 +21,5 @@ interface Circle {
     var isClickable: Boolean
     var isVisible: Boolean
     fun remove()
-    fun setData(data: Any?)
+    fun setData(data: Any)
 }

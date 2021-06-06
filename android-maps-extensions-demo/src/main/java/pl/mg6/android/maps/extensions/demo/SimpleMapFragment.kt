@@ -22,8 +22,8 @@ class SimpleMapFragment : BaseFragment() {
         map!!.addMarker(MarkerOptions().position(LatLng(15.0, 3.0)))
         map!!.addMarker(MarkerOptions().position(LatLng(14.99, 3.01)))
         map!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
-            override fun onMarkerClick(marker: Marker?): Boolean {
-                ToastHelper.showToast(activity, "Clicked marker at: " + marker!!.position)
+            override fun onMarkerClick(marker: Marker): Boolean {
+                ToastHelper.showToast(activity, "Clicked marker at: " + marker.position)
                 return false
             }
         })
