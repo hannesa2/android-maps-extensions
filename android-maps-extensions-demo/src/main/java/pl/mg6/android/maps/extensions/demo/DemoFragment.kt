@@ -51,8 +51,8 @@ class DemoFragment : BaseFragment() {
         addCircles()
         map!!.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
             override fun onMapClick(position: LatLng) {
-                for (circle in map!!.circles!!) {
-                    if (circle!!.contains(position)) {
+                for (circle in map!!.circles) {
+                    if (circle.contains(position)) {
                         ToastHelper.showToast(activity, "Clicked " + circle.getData<Any>())
                         return
                     }
@@ -77,13 +77,13 @@ class DemoFragment : BaseFragment() {
                 } else collator.compare(leftTitle, rightTitle)
             }
 
-            override fun getInfoWindow(marker: Marker?): View? {
+            override fun getInfoWindow(marker: Marker): View? {
                 return null
             }
 
             @SuppressLint("SetTextI18n")
-            override fun getInfoContents(marker: Marker?): View? {
-                if (marker!!.isCluster) {
+            override fun getInfoContents(marker: Marker): View? {
+                if (marker.isCluster) {
                     val markers = marker.markers
                     var i = 0
                     var text = ""
@@ -122,8 +122,8 @@ class DemoFragment : BaseFragment() {
             }
         })
         map!!.setOnInfoWindowClickListener(object : GoogleMap.OnInfoWindowClickListener {
-            override fun onInfoWindowClick(marker: Marker?) {
-                if (marker!!.isCluster) {
+            override fun onInfoWindowClick(marker: Marker) {
+                if (marker.isCluster) {
                     val markers = marker.markers
                     val builder = LatLngBounds.builder()
                     markers.forEach {
@@ -154,7 +154,7 @@ class DemoFragment : BaseFragment() {
 
     private fun onDataUpdate() {
         val m = map!!.markerShowingInfoWindow
-        if (m != null && !m.isCluster && m.getData<Any>() is MutableData) {
+        if (!m.isCluster && m.getData<Any>() is MutableData) {
             m.showInfoWindow()
         }
     }

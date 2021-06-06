@@ -45,8 +45,8 @@ class AnimateMarkersFragment : BaseFragment() {
             }
         }
         map!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
-            override fun onMarkerClick(marker: Marker?): Boolean {
-                val position = marker!!.position
+            override fun onMarkerClick(marker: Marker): Boolean {
+                val position = marker.position
                 val targetPosition = randomPositionAcrossTheOcean(position)
                 val duration = (random.nextInt(1500) + 1500).toLong()
                 val interpolator = randomInterpolator()
@@ -59,8 +59,8 @@ class AnimateMarkersFragment : BaseFragment() {
             override fun onMapClick(position: LatLng) {
                 var closest: Marker? = null
                 var distanceToClosest = Float.MAX_VALUE
-                for (marker in map!!.markers!!) {
-                    val markerPosition = marker!!.position
+                for (marker in map!!.markers) {
+                    val markerPosition = marker.position
                     val distance = LatLngUtils.distanceBetween(position, markerPosition)
                     if (distanceToClosest > distance) {
                         distanceToClosest = distance

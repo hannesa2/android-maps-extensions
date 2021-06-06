@@ -22,8 +22,8 @@ class DeClusterificationExampleFragment : BaseFragment() {
         map!!.setClustering(ClusteringSettings().clusterOptionsProvider(DemoClusterOptionsProvider(resources)))
         MarkerGenerator.addMarkersInPoland(map)
         map!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
-            override fun onMarkerClick(marker: Marker?): Boolean {
-                if (marker!!.isCluster) {
+            override fun onMarkerClick(marker: Marker): Boolean {
+                if (marker.isCluster) {
                     declusterify(marker)
                     return true
                 }
@@ -54,7 +54,7 @@ class DeClusterificationExampleFragment : BaseFragment() {
 
     private fun calculateDistanceBetweenMarkers(): Double {
         val projection = map!!.projection
-        val point = projection!!.toScreenLocation(LatLng(0.0, 0.0))
+        val point = projection.toScreenLocation(LatLng(0.0, 0.0))
         point.x += requireContext().resources.getDimensionPixelSize(R.dimen.distance_between_markers)
         val nextPosition = projection.fromScreenLocation(point)
         return nextPosition.longitude

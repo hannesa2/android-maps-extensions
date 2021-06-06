@@ -6,10 +6,13 @@ import com.google.android.gms.maps.model.Circle
 import java.util.*
 
 internal class CircleManager(private val factory: IGoogleMap) {
-    private val circles: MutableMap<Circle?, com.androidmapsextensions.Circle>
+    private val circles: MutableMap<Circle?, com.androidmapsextensions.Circle> = HashMap()
+
     fun addCircle(circleOptions: CircleOptions): com.androidmapsextensions.Circle {
         val circle = createCircle(circleOptions.real)
-        circle.setData(circleOptions.data)
+        circleOptions.data?.let {
+            circle.setData(it)
+        }
         return circle
     }
 
@@ -42,12 +45,11 @@ internal class CircleManager(private val factory: IGoogleMap) {
 
     private inner class DelegatingOnCircleClickListener(private val onCircleClickListener: GoogleMap.OnCircleClickListener) : com.google.android.gms.maps.GoogleMap.OnCircleClickListener {
         override fun onCircleClick(circle: Circle) {
-            onCircleClickListener.onCircleClick(circles[circle])
+            circles[circle]?.let {
+                onCircleClickListener.onCircleClick(it)
+            }
         }
 
     }
 
-    init {
-        circles = HashMap()
-    }
 }
