@@ -48,7 +48,7 @@ class LaunchTimeTestFragment : BaseFragment() {
         }
         val end = SystemClock.uptimeMillis()
         val time = end - start
-        val zoom = map!!.cameraPosition!!.zoom
+        val zoom = map!!.cameraPosition.zoom
         val format = "Time adding %d markers (option: %d, zoom: %.1f): %d"
         val text = String.format(Locale.US, format, MARKERS_COUNT, clusteringType, zoom, time)
         Log.i(TAG, text)

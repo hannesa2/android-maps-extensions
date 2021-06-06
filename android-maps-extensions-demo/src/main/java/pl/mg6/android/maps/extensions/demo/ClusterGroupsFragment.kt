@@ -33,7 +33,7 @@ class ClusterGroupsFragment : BaseFragment() {
         val single = map!!.addMarker(MarkerOptions().position(LatLng(10.0, 10.0)).icon(greenIcon).clusterGroup(ClusterGroup.NOT_CLUSTERED))
         map!!.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
             override fun onMapClick(position: LatLng) {
-                single!!.position = position
+                single.position = position
             }
         })
         map!!.setOnMapLongClickListener(object : GoogleMap.OnMapLongClickListener {

@@ -38,7 +38,7 @@ class LazyMarker @JvmOverloads constructor(map: GoogleMap?, options: MarkerOptio
             createMarker()
             return marker!!.id
         }
-    var position: LatLng?
+    var position: LatLng
         get() = if (marker != null) {
             marker!!.position
         } else {
@@ -72,7 +72,7 @@ class LazyMarker @JvmOverloads constructor(map: GoogleMap?, options: MarkerOptio
         }
         set(snippet) {
             if (marker != null) {
-                marker!!.setSnippet(snippet)
+                marker!!.snippet = snippet
             } else {
                 markerOptions!!.snippet(snippet)
             }
@@ -207,14 +207,14 @@ class LazyMarker @JvmOverloads constructor(map: GoogleMap?, options: MarkerOptio
 
     private fun createMarker() {
         if (marker == null) {
-            createMarker(map, markerOptions, listener)
+            createMarker(map, markerOptions!!, listener)
             map = null
             markerOptions = null
             listener = null
         }
     }
 
-    private fun createMarker(map: GoogleMap?, options: MarkerOptions?, listener: OnMarkerCreateListener?) {
+    private fun createMarker(map: GoogleMap?, options: MarkerOptions, listener: OnMarkerCreateListener?) {
         marker = map!!.addMarker(options)
         listener?.onMarkerCreate(this)
     }

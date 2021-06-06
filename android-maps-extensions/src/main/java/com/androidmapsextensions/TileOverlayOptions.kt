@@ -20,7 +20,7 @@ class TileOverlayOptions {
 
     val fadeIn: Boolean
         get() = real.fadeIn
-    val tileProvider: TileProvider
+    val tileProvider: TileProvider?
         get() = real.tileProvider
     val transparency: Float
         get() = real.transparency
@@ -29,7 +29,7 @@ class TileOverlayOptions {
     val isVisible: Boolean
         get() = real.isVisible
 
-    fun tileProvider(tileProvider: TileProvider?): TileOverlayOptions {
+    fun tileProvider(tileProvider: TileProvider): TileOverlayOptions {
         real.tileProvider(tileProvider)
         return this
     }
