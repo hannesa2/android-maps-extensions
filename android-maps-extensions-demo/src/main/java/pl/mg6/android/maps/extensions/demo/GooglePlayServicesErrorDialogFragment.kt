@@ -15,7 +15,7 @@ class GooglePlayServicesErrorDialogFragment : DialogFragment() {
         if (args != null) {
             status = args.getInt(KEY_STATUS)
         }
-        return GooglePlayServicesUtil.getErrorDialog(status, activity, 0)
+        return GooglePlayServicesUtil.getErrorDialog(status, requireActivity(), 0)
     }
 
     companion object {
