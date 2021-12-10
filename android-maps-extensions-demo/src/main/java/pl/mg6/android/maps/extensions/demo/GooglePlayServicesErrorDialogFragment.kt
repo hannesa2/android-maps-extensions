@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.common.GooglePlayServicesUtil
 import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 
 class GooglePlayServicesErrorDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -15,7 +16,7 @@ class GooglePlayServicesErrorDialogFragment : DialogFragment() {
         if (args != null) {
             status = args.getInt(KEY_STATUS)
         }
-        return GooglePlayServicesUtil.getErrorDialog(status, requireActivity(), 0)
+        return GoogleApiAvailability.getInstance().getErrorDialog(requireActivity(), status, 0)!!
     }
 
     companion object {
@@ -37,10 +38,10 @@ class GooglePlayServicesErrorDialogFragment : DialogFragment() {
 
         fun showDialogIfNotAvailable(activity: FragmentActivity): Boolean {
             removeDialog(activity)
-            val status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity)
+            val status = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(activity)
             val available = status == ConnectionResult.SUCCESS
             if (!available) {
-                if (GooglePlayServicesUtil.isUserRecoverableError(status)) {
+                if (GoogleApiAvailability.getInstance().isUserResolvableError(status)) {
                     showDialog(status, activity)
                 } else {
                     showToast(activity.application, "Google Play services not available")
