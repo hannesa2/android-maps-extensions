@@ -24,7 +24,7 @@ dependencies {
     implementation (project (':android-maps-extensions')) {
         exclude module: 'play-services-maps'
     }
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation "androidx.core:core-ktx:1.8.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
