@@ -11,9 +11,10 @@ android {
     defaultConfig {
         minSdkVersion 14
     }
-    lintOptions {
+    lint {
         abortOnError true
     }
+    namespace 'com.androidmapsextensions'
 }
 
 dependencies {

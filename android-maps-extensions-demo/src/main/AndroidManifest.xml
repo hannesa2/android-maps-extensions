@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="pl.mg6.android.maps.extensions.demo"
     android:versionCode="8"
     android:versionName="1.4.1-SNAPSHOT">
 
