@@ -12,12 +12,13 @@ android {
         minSdkVersion 14
         targetSdkVersion 33
     }
-    lintOptions {
-        abortOnError false
-    }
     buildFeatures {
         viewBinding true
     }
+    lint {
+        abortOnError false
+    }
+    namespace 'pl.mg6.android.maps.extensions.demo'
 }
 
 dependencies {
