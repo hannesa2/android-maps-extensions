@@ -6,15 +6,22 @@ tasks.withType(JavaCompile) {
 }
 
 android {
-    compileSdkVersion 33
+    namespace 'com.androidmapsextensions'
 
     defaultConfig {
         minSdkVersion 14
+        compileSdk 33
     }
     lint {
         abortOnError true
     }
-    namespace 'com.androidmapsextensions'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {

@@ -6,10 +6,10 @@ tasks.withType(JavaCompile) {
 }
 
 android {
-    compileSdkVersion 33
-
+    namespace 'pl.mg6.android.maps.extensions.demo'
     defaultConfig {
         minSdkVersion 14
+        compileSdk 33
         targetSdkVersion 33
     }
     buildFeatures {
@@ -18,7 +18,13 @@ android {
     lint {
         abortOnError false
     }
-    namespace 'pl.mg6.android.maps.extensions.demo'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
