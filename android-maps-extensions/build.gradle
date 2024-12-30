@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        compileSdk 34
+        compileSdk 35
     }
     lint {
         abortOnError true

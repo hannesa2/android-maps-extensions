@@ -8,9 +8,8 @@ tasks.withType(JavaCompile) {
 android {
     namespace 'pl.mg6.android.maps.extensions.demo'
     defaultConfig {
-        minSdkVersion 14
-        compileSdk 34
-        targetSdkVersion 34
+        minSdk 14
+        compileSdk 35
     }
     buildFeatures {
         viewBinding true
