@@ -9,7 +9,7 @@ android {
     namespace 'com.androidmapsextensions'
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         compileSdk 35
     }
     lint {

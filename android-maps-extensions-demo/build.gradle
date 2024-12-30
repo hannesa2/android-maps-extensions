@@ -8,7 +8,7 @@ tasks.withType(JavaCompile).configureEach {
 android {
     namespace 'pl.mg6.android.maps.extensions.demo'
     defaultConfig {
-        minSdk 14
+        minSdk 21
         compileSdk 35
     }
     buildFeatures {
