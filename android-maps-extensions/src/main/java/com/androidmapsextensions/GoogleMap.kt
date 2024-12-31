@@ -191,4 +191,12 @@ interface GoogleMap {
     interface SnapshotReadyCallback : GoogleMap.SnapshotReadyCallback {
         override fun onSnapshotReady(bitmap: Bitmap?)
     }
+
+    companion object {
+        val MAP_TYPE_HYBRID = com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID
+        val MAP_TYPE_NONE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NONE
+        val MAP_TYPE_NORMAL = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
+        val MAP_TYPE_SATELLITE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE
+        val MAP_TYPE_TERRAIN = com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN
+    }
 }
