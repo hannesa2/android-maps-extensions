@@ -193,10 +193,10 @@ interface GoogleMap {
     }
 
     companion object {
-        val MAP_TYPE_HYBRID = com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID
-        val MAP_TYPE_NONE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NONE
-        val MAP_TYPE_NORMAL = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
-        val MAP_TYPE_SATELLITE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE
-        val MAP_TYPE_TERRAIN = com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN
+        const val MAP_TYPE_HYBRID = com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID
+        const val MAP_TYPE_NONE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NONE
+        const val MAP_TYPE_NORMAL = com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
+        const val MAP_TYPE_SATELLITE = com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE
+        const val MAP_TYPE_TERRAIN = com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN
     }
 }
